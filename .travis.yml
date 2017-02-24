@@ -8,31 +8,32 @@ script:
 - ./scripts/docker-docs.sh ./scripts/test-docs.sh
 - sudo rm -rf docs/_build/linkcheck
 deploy:
-- provider: s3
-  access_key_id:
-    secure:
-  secret_access_key:
-    secure:
-  bucket: $S3_BUCKET_NAME
-  local-dir: docs/_build/
-  upload-dir: containers/$TRAVIS_BRANCH
-  skip-cleanup: true
-  region: us-west-2
-  on:
-    branch: $TRAVIS_BRANCH
-    condition: $TRAVIS_PULL_REQUEST = false
-- provider: s3
-  access_key_id:
-    secure: 
-  secret_access_key:
-    secure: 
-  bucket: $S3_BUCKET_NAME
-  local-dir: docs/_build/
-  upload-dir: containers/$TRAVIS_TAG
-  skip-cleanup: true
-  region: us-west-2
-  on:
-    tags: true
+  matrix:
+  - provider: s3
+    access_key_id:
+      secure: qrYjqNBoBdVZ8Gpj5tXqzNhdSg+7dqLimLO4fpybZCS2vVBSM7W7mh5iJ8GXqp/KTNI557P9oN96+nHKyWpbxBbnO/MG4F4CzwNbv1rOwRNqykDjfaeGsGvlz5A4nKK5QHKQPRKOV/4LXfmkbVtYvjPFFbcO3oFgfnjmOxoA0fZ+fHEs84tR1y/EAvqiueo6/1EBbhXK3khu4Hpe7FgENEWp59EwOW/vf3Z9OPru+zwiCHi7oaTmwtfFXyb29WpLQXRSKB5i/U8AKD9snzkjmdasqY8nxlKJgvf4R74x6OKLq7lhthQnwuVdc6C+2J4ySsj0th4WvOvPpCumwehqUzJ+mTawGXWz+5vb3Bmh5hfr1U9rIR4oUBAx1GpUHZ1THOw/BE6pah4JvzPJlgfIQnw8slAhriHwmviThVuH4j42ZPL0bAVd4Ki6Y8thOC4Zs45tgDIFg8VQr+90tIlU1q6fZWCnq/IXxJu3sh3elR6EvShBF2eEdMJByHCwhaDRUDJMemjBl5bIUSZwo6alw438Fc3+QOmMsU5CTqP/o8Of0hXWVYRRC0P7o1ljw2ZGA+gC4qeIvGNorn82SvQ6n60RbK60ALco93+s3agWuMRD3aZokepNYL8nOU2EaYuxEQxCiEzF9rEVZVYTzclDGjh04x1yc0EShOFeZC8iOPI=
+    secret_access_key:
+      secure: V/irY/leICn7Bq3UfZdpClknFJQHaaZvoEb9qX+P518FyDnqhgB1dPdB3WimqafRkPZdCTEohyYkPAyqvZmAXthaoLHBG4t6gyrQ3Y+35CCjLeIy8aIcMEiIwn+zeNJXArTKKFraHruMpqgCKv2dnk9mzsEjsybjxInpZCZGtGSL29VvZFO5b74k81Cyr+pzyRDor7e3qwPpKgWDmq3vYTk8gSRpIq6BuK79Ajb3BJIkODO1uSyvSEXHPd1L8jwrp4JMpRrOBXmkonv3JRqrh27YX4W/ZrL6V0eWpypodtpArJ8Hfv3zG2VjHAJ4RNTy+uFRCXhyJpwNg+dFcyorUqnJrwF300SP64jarhVtbEfQIzdlVjbFsMlHe9bPPvLxZCrbXS+UYupbMDYR7Q3xyY66lLutWQK/lq8Edak6UgJxKpgiwKEdk3wpPgkrpg6eEP7F+Jgf3ZbXie9ORAI2uXqr6tGA1yqA/QQEWwIyjVaj7puUYOx0OPlw9jM0cojmk+s+tjhg/6ChcjJMi1K+hSFX2NnXga/2LbUj2jWdfLtnYH1aIwSxrq1h5aM34rmcr6VhWHocG1u2t1f8kwUGFpghUPOsn3bfaO8/Tc4LNFMEGw0MdK1Io4mBs/KpyKK/Ggg3TMJ73Lj00qqxCVbFeV6rpzwzHlKGfCpHqcylxHU=
+    bucket: $S3_BUCKET_NAME
+    local-dir: docs/_build/
+    upload-dir: containers/$TRAVIS_BRANCH
+    skip-cleanup: true
+    region: us-west-2
+    on:
+      branch: $TRAVIS_BRANCH
+      condition: $TRAVIS_PULL_REQUEST = false
+  - provider: s3
+    access_key_id:
+      secure: qrYjqNBoBdVZ8Gpj5tXqzNhdSg+7dqLimLO4fpybZCS2vVBSM7W7mh5iJ8GXqp/KTNI557P9oN96+nHKyWpbxBbnO/MG4F4CzwNbv1rOwRNqykDjfaeGsGvlz5A4nKK5QHKQPRKOV/4LXfmkbVtYvjPFFbcO3oFgfnjmOxoA0fZ+fHEs84tR1y/EAvqiueo6/1EBbhXK3khu4Hpe7FgENEWp59EwOW/vf3Z9OPru+zwiCHi7oaTmwtfFXyb29WpLQXRSKB5i/U8AKD9snzkjmdasqY8nxlKJgvf4R74x6OKLq7lhthQnwuVdc6C+2J4ySsj0th4WvOvPpCumwehqUzJ+mTawGXWz+5vb3Bmh5hfr1U9rIR4oUBAx1GpUHZ1THOw/BE6pah4JvzPJlgfIQnw8slAhriHwmviThVuH4j42ZPL0bAVd4Ki6Y8thOC4Zs45tgDIFg8VQr+90tIlU1q6fZWCnq/IXxJu3sh3elR6EvShBF2eEdMJByHCwhaDRUDJMemjBl5bIUSZwo6alw438Fc3+QOmMsU5CTqP/o8Of0hXWVYRRC0P7o1ljw2ZGA+gC4qeIvGNorn82SvQ6n60RbK60ALco93+s3agWuMRD3aZokepNYL8nOU2EaYuxEQxCiEzF9rEVZVYTzclDGjh04x1yc0EShOFeZC8iOPI=
+    secret_access_key:
+      secure: V/irY/leICn7Bq3UfZdpClknFJQHaaZvoEb9qX+P518FyDnqhgB1dPdB3WimqafRkPZdCTEohyYkPAyqvZmAXthaoLHBG4t6gyrQ3Y+35CCjLeIy8aIcMEiIwn+zeNJXArTKKFraHruMpqgCKv2dnk9mzsEjsybjxInpZCZGtGSL29VvZFO5b74k81Cyr+pzyRDor7e3qwPpKgWDmq3vYTk8gSRpIq6BuK79Ajb3BJIkODO1uSyvSEXHPd1L8jwrp4JMpRrOBXmkonv3JRqrh27YX4W/ZrL6V0eWpypodtpArJ8Hfv3zG2VjHAJ4RNTy+uFRCXhyJpwNg+dFcyorUqnJrwF300SP64jarhVtbEfQIzdlVjbFsMlHe9bPPvLxZCrbXS+UYupbMDYR7Q3xyY66lLutWQK/lq8Edak6UgJxKpgiwKEdk3wpPgkrpg6eEP7F+Jgf3ZbXie9ORAI2uXqr6tGA1yqA/QQEWwIyjVaj7puUYOx0OPlw9jM0cojmk+s+tjhg/6ChcjJMi1K+hSFX2NnXga/2LbUj2jWdfLtnYH1aIwSxrq1h5aM34rmcr6VhWHocG1u2t1f8kwUGFpghUPOsn3bfaO8/Tc4LNFMEGw0MdK1Io4mBs/KpyKK/Ggg3TMJ73Lj00qqxCVbFeV6rpzwzHlKGfCpHqcylxHU=
+    bucket: $S3_BUCKET_NAME
+    local-dir: docs/_build/
+    upload-dir: containers/$TRAVIS_TAG
+    skip-cleanup: true
+    region: us-west-2
+    on:
+      tags: true
 notifications:
   slack:
     secure: WJtWoSB8LMb2EuKVzlVt0LB2FJMocWrXRpT0IKhx4143wjQyZUmZtk6lzX0a/CtMI9JqhJy/fWawHAyEDJrpr2VWoahGlxc1c5+3tOfhnM62s3i3bZC/FCsXffs4O9Fci6eFeiw/300q1oQu3nvRj2rntmSXwB5Dp68vMnvvevttseljwWCYocxmN3CFBcfT3+0LU+LRQOz/WdP/DWoQqBD0rcvVnxpBx/1MMtDp2q55tCzJTukLQbIRCY/Onz+Hc/ZXYmbK+yIu5/N0Ylbhu0hwdXD0vJrrxSt68MjxReuM4U6aF3vC4QZ7d87bxTNKBKnGd/+KNnB5rbLsJyeHjI0f6Qx90MpP71PSIF3eQl1g7pC3hrsb/UP9iEpVeC6Hb9vM7J9U67WJckEty19Rwwlw0Bgiem52JMq+cctX/THCTTe9X87PHGtItDsRc4C3xoonSigaaiuh1/wh3Tabx8RYNZaWOoHUv5M3G50V7zszYF0427n0S0ckfHZ0bcVlU+TLAVhv0XWueoK3ggTE08NV+g2oFiPG88fKiKNIJxSzap4a2qEBELIUJUuYLn7FA4x3isEQVpbikocaPuXRm7060Q1oBv8tDPVkDWaQS3QnqknvDQGGL9MvrB1ZSjiASG0Saw7HYauNWxFxgxLPpsjk2+InYcj3wL6KEo8G0bs=
