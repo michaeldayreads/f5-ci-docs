@@ -1,3 +1,7 @@
+env:
+  global:
+  - secure: CDOySstDoewU3jhluQlhvP27MUWDYul81TaygXyt1qheowAOm+Zb5kyjaz7aK1GYZiv8KQ6MoXi/MvbxzLclxW4I6tEY7eZGG7RCsoh1YeHM2uppXqflQqCEgxQuSerxcnf00pWosEvsMnPmpU5dlu0vU8lYxMpn7VaMIabn9CF2Huk8aTOadefMvwANLLySqgvR8P/6Wruq1JM/jq5Zn6zifZ5l84fvqzlyQtOovGqEAK7U6wMDuxyOf0/2hNnisAIGYSJhsyPszhPpWeYvBi5fTTNDS9BlFDPR86AkA8SP4rJlzoEM+ufHRgIN2Oa5iSVi9M0jz5BhChwZhA+SPzJ19OCj80rgLobEqlw6qwVcUuZEqdNBPJZY9NIoMk/f7x9+ie+YXH84KA8IkYFuwcrUD7teNN9AEjS5OeXW3VcAgbHqq4LA8GpNORvWlLi4vQyoQxOFH35BqFCbZT4l49ixfLsQyQuj25XqQXuaK5g9TevZDsqP0zRbxpuRe0hrMVJcnYGEwrTbjiS4Go8mXk0WMiowPHEnGIAMuplD3sfPMJ1Aqc5ZW6aUYp7TiYQYnvO1rSPZnl1HkPElESHoEsGxEp/3/vuv7As7eAyeIA+bH2lAG0pYezyqZsnnKn14CwZ+Aq/HY2cbIENM5LZdn7kX3O/Me68Q5x6UVXqIahQ=
+  - secure: mS/ckBsjIZyvyn6Bu0v2VeYA/BBfBMuU4kkiRqxqrq1YnDFIHFU7ydjNKgyw4c+STNUhr45Wes4FAGIIgReZwasUu6Wy5PIoTKKBroYq1OlMrmrg+Zpa7AVK1GBpVaW9FQorYm6BgnxcB0iGwlzXV6lz+49TOW1LyABRVJMN/pUXhPBRmP4bWyPRvlv30pj38GHwNsZjSDMVFbR3fJXCtM5NF/V23axziIH23mNf4aVgn95N0S87KVhQaG0+ewSqo72nJPssInVnAWTNC17hr/osy3rNtNghQk0K8uhC17XOLoygsiz/7dPW8zMnXoaxNiob6RuFM9OXMeOpZ/7Ae2qOfZq2eR1WQmxqyWJc97y/ZJQN9Xd1rdEsfOmHy/CgK5Yx1vhrd/IxTqY9dU2lfIQ1jh6V/98tR4WvEAOOQL3vyP5q1xE7+Pr66oGfmdJMu7VtWrcTZvD79agrRw6m/thUkQKL7E0n9kOKAuO1Z7I9XkxV3O4RSeZO2ns9vH1oBxKeMI9sb+rt9LJVn7P7bwRt8kquQAW+v5j0dnDzD3ejrC/elsPrvMSr906uQ1GXFdQrgLStxetvmMhzuQNOxP9VnYjsurehzQLe8Rql+a4MSO0OLsl/6RL9z4Je3/k6gEGFoVoVYD9e+a0X8uRK5Ulw5bBDvdE7pxTmFI+fc7Q=
 language: python
 sudo: required
 services:
@@ -7,30 +11,26 @@ before_install:
 script:
 - ./scripts/docker-docs.sh ./scripts/test-docs.sh
 deploy:
-  - provider: s3
-    access_key_id:
-      secure: "Ii+nwaFHk5XBlHKOT9RcK65T/rYpT1ZUEf+q+5MwUBbhgbkhLo75pyTxRLJNNNR/apDcjV4gFa/WyQsnqei/EbKcXLCVMZgdd0bBzoB8iG9DJmzybuPmqMcxP2yxjAzZWNMbPkeiRchtfcgYPd0EICRjBLaH0VTUS+gBzr6WbUvKH2/sM85FNOaZR5qW7l8122D/cvU8PKYtSR/saTHUa75mrry4AyvTs3CzrZzAFrUT4qBUST0XvMv/vwTTMVo708y5ViEsE4oXkfjbXhy14p/hNoU9kU10TvZZJ3k0VJqs5KQsu+IA2TRcLRJxEQa9OoctcC4Mf+88o9svjOeMYBS/whdiecGdQgmy2hWNvs5ZcwwqIFo6agRW41gTBMBm5fk9UueXfy/8DXtXmvt9wW0+ItX5CK9OS2yStw3fsdN+MF0vQmx0qv7RftxUSB97oee8YxF8mwvRQJEYg8Wqj199Liz/6EGFcCwBezolvjXtJSHQry9blRQkTC/+PFsHP5nfwxzDJ5DmjI8E2WkuMh1vDvMJz6jzGGai0Gu2UFiPVZRSZPkIxFgwYzKBMFfZcWI9tYm1rnsTGIgnc7gVW4aU5GoYLQIuYhTapNDQcDeGzwIgh1TsYJgKAPuaeIKNbvwW4aAKsE3jUFzJA/2OarHdCECSGVZyXMtwt6X4Dgg="
-    secret_access_key:
-      secure: "ePpWERNloDP7vWz9On0zMngpMKwtRte6fi0SLRDKy0EYyhjWJVutBZnyJRstulpZ4TnYQEKB4hjSbjjdxdLVBf0PeJcXgN8O7ePsbbh171P+L+ktZNm/3KB2/xXPvOA8Ezwu1JRe/nxHXWUCKuqn3rZB0pB9/xqq+ajC7D3kFDhZQsaItj5hXCAIelJEbXgHoXgnd/x119m30U/rNqFGLCkaygote9eOmMUCtHB888uip7kQkXDbrglzsWVI6/Ed7YG6udT2QT6xH6o9lpc4F0ILl/7qC4s69/k2gmSfKtLJCpdK8h7M7HMrbSePTc5XZpdXcs0/67asCarICIngCyihIywgBcMm0KE7hxwouF09AzL6pyJeEYcv3PSmbamiWV8XBBXnuEifADZ7o1ouH/IrQvo2y+k0FpgBlOu2sD/1cX2vXP+Ngsa6QPM8RNqRvC4ReajbUGapkpm5O3JwbHotHI3DqzmH7rxwya55LRsXe639XfFsRZP7AxteRADt4W968ekyTPx1WJiDCw5x0b0l0Mci8TcsuiBCtmLfQ7mvVNbrTmIFa4wG6n1XyjSzCWlB4Yoj8AvJhERm8AlMW59nN+4kO34owgs0gFLWjkiWZQS+xY+FKiZ4wpuaZOvmEKgSLD35Njei3rLQfuHf0prSU8fvbViTb6o0fgdZGVc="
-    bucket: $S3_BUCKET_NAME
-    local-dir: docs/_build/html
-    upload-dir: containers/$TRAVIS_TAG
-    skip-cleanup: true
-    region: "us-west-2"
-    on:
-      tags: true
-  - provider: s3
-    access_key_id:
-      secure: "Ii+nwaFHk5XBlHKOT9RcK65T/rYpT1ZUEf+q+5MwUBbhgbkhLo75pyTxRLJNNNR/apDcjV4gFa/WyQsnqei/EbKcXLCVMZgdd0bBzoB8iG9DJmzybuPmqMcxP2yxjAzZWNMbPkeiRchtfcgYPd0EICRjBLaH0VTUS+gBzr6WbUvKH2/sM85FNOaZR5qW7l8122D/cvU8PKYtSR/saTHUa75mrry4AyvTs3CzrZzAFrUT4qBUST0XvMv/vwTTMVo708y5ViEsE4oXkfjbXhy14p/hNoU9kU10TvZZJ3k0VJqs5KQsu+IA2TRcLRJxEQa9OoctcC4Mf+88o9svjOeMYBS/whdiecGdQgmy2hWNvs5ZcwwqIFo6agRW41gTBMBm5fk9UueXfy/8DXtXmvt9wW0+ItX5CK9OS2yStw3fsdN+MF0vQmx0qv7RftxUSB97oee8YxF8mwvRQJEYg8Wqj199Liz/6EGFcCwBezolvjXtJSHQry9blRQkTC/+PFsHP5nfwxzDJ5DmjI8E2WkuMh1vDvMJz6jzGGai0Gu2UFiPVZRSZPkIxFgwYzKBMFfZcWI9tYm1rnsTGIgnc7gVW4aU5GoYLQIuYhTapNDQcDeGzwIgh1TsYJgKAPuaeIKNbvwW4aAKsE3jUFzJA/2OarHdCECSGVZyXMtwt6X4Dgg="
-    secret_access_key:
-      secure: "ePpWERNloDP7vWz9On0zMngpMKwtRte6fi0SLRDKy0EYyhjWJVutBZnyJRstulpZ4TnYQEKB4hjSbjjdxdLVBf0PeJcXgN8O7ePsbbh171P+L+ktZNm/3KB2/xXPvOA8Ezwu1JRe/nxHXWUCKuqn3rZB0pB9/xqq+ajC7D3kFDhZQsaItj5hXCAIelJEbXgHoXgnd/x119m30U/rNqFGLCkaygote9eOmMUCtHB888uip7kQkXDbrglzsWVI6/Ed7YG6udT2QT6xH6o9lpc4F0ILl/7qC4s69/k2gmSfKtLJCpdK8h7M7HMrbSePTc5XZpdXcs0/67asCarICIngCyihIywgBcMm0KE7hxwouF09AzL6pyJeEYcv3PSmbamiWV8XBBXnuEifADZ7o1ouH/IrQvo2y+k0FpgBlOu2sD/1cX2vXP+Ngsa6QPM8RNqRvC4ReajbUGapkpm5O3JwbHotHI3DqzmH7rxwya55LRsXe639XfFsRZP7AxteRADt4W968ekyTPx1WJiDCw5x0b0l0Mci8TcsuiBCtmLfQ7mvVNbrTmIFa4wG6n1XyjSzCWlB4Yoj8AvJhERm8AlMW59nN+4kO34owgs0gFLWjkiWZQS+xY+FKiZ4wpuaZOvmEKgSLD35Njei3rLQfuHf0prSU8fvbViTb6o0fgdZGVc="
-    bucket: $S3_BUCKET_NAME
-    local-dir: docs/_build/html
-    upload-dir: containers/$TRAVIS_BRANCH
-    skip-cleanup: true
-    region: "us-west-2"
-    on:
-      all_branches: true
+- provider: s3
+  access_key_id: $S3_ACCESS_KEY_ID
+  secret_access_key: $S3_SECRET_ACCESS_KEY
+  bucket: $S3_BUCKET_NAME
+  local-dir: docs/_build/html
+  upload-dir: containers/$TRAVIS_TAG
+  skip-cleanup: true
+  region: us-west-2
+  on:
+    tags: true
+- provider: s3
+  access_key_id: $S3_ACCESS_KEY_ID
+  secret_access_key: $S3_SECRET_ACCESS_KEY
+  bucket: $S3_BUCKET_NAME
+  local-dir: docs/_build/html
+  upload-dir: containers/$TRAVIS_BRANCH
+  skip-cleanup: true
+  region: us-west-2
+  on:
+    all_branches: true
 notifications:
   slack:
     secure: JPfhrjoJMHIolWfr+BggymfsuzcMq8hQrI6NgmbH9Op/1LnP7v0pzXabvePBX6jCzEpB6E/pizwrw/7D5r78+GD6gm2eiZ3NNupBSnVBwSQr51pfAH23RB1pafTgjyllrNJLAWia23ihB1oa+yj3ll/clOXke5o8436IJp+KRUk0q8F0HBbke7lLcGii/H2WqGZ9f6bqee0w6wVCjKL86o5EjbF/muBScw6npeGAyuShILsUybgQwJnCHG2Vn4o4L+ZzGga8FljhUJxEIx4v+m0wwTg7mIRrLQbZ0qCXQfc8hU858koa5+nVTt9Cj3fiLNIOtd0K6RujwTqdPTSMBrpbs7Gr1wzaejaKYsWUeJ1DG75MfpbHhTuUgNHNktgEVU6xiS8NL3RwsqfzU6vLbwe2e1EmAOQN6mTKkD+QU3dtJCPHr1tDydN5BSt+uVrd2EiGGuQMIfLGSPBJgCieu0dHgCAKOArKU0zn/gHJhwjxBALq2w0G75JR/wzz7agyQ4awCYZy866hLJPAMKtk+6Bl9qvmKfWBaXQDqrRpZBlhQqOKz2BL/wLPsP3/fVdubn98Ip3ZiTbXmxSRfNCCk4URsx1k9iWk9Qxs+oXIgBfvXuOJxAuwG7OYSbu6HCf18FbaZ2dmkU2hjicEL3BThHjWwf7V4aNdbtanJqkbh6s=
